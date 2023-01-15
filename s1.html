@@ -1,38 +1,32 @@
-<html>
-    <head>
-        <title>validate form</title>
-    </head>
-    <body>
-        <form action="s5.html">
-        <label>textbox:</label>
-        <input type="text" id="r1" value=""><br><br>
-        <input type="submit" value="submit"/><br><br>
-
-        <label>Checkbox:</label>
-        <input type="text" value=""/><br>
-        <input type="submit" value="submit"/><br><br>
-        <label>textarea</label><br>
-        <textarea name="textarea" id="" cols="30" rows="5">
-        </textarea><br>
-        <input type="submit" value="submit"/><br><br>
-        <label>Select:</label>
-        <select value="sem">
-            <option value="1">sem1</option>
-            <option value="2">sem2</option><br>
-        </select><br><br>
-            <input type="submit" value="submit"/><br>
-            <label>radio</label><br>
-            <input type="radio" id="r1" value="">MAle<br>
-            <input type="radio" id="r2" value="">Female<br> 
-            <input type="submit" value="submit"/>
-            <br><br>
-            <label>file:</label>
-            <input type="file" value="file"/><br>
-            <label>Name:</label><br>
-            <input type="text" value="firstname"/><br>
-            <input type="text" value="secondname"/>
-            <input type="submit" value="submit"/> 
-        </form>
+import { useState } from "react";
+import "./app.css";
+function App() {
+const [list, setList] = useState([]);
+const [value, setValue] = useState("");
+const addToList = () => {
+let tempArr = list;
+tempArr.push(value);
+setList(tempArr);
+setValue("");
+};
+const deleteItem = (index) => {
+let temp = list.filter((item, i) => i !== index);
+setList(temp);
+};
+return (
+<div className="App">
+<fieldset>
+<h>Add Product to List</h><br></br>
+<input type="text" value={value} onChange={(e) => setValue(e.target.value)}/>
+<button onClick={addToList}> Click to Add </button><br></br><br></br>
+<h>Product Catalog</h><br></br>
+<ol>
+{list.map((item, i) => <li onClick={() => deleteItem(i)}>{item} </li>)}
+</ol>
+<h>Click on Product to Delete</h><br></br>
+</fieldset></div>
+);
+}export default App;
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './app.css'
