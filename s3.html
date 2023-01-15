@@ -1,0 +1,17 @@
+<hmtl>
+    <head>
+        <title>details form</title>
+    </head>
+    <body>
+        <form>
+            your name is:<p id="name"></p>
+            your email is:<p id="email"></p>
+            your address is:<p id="address"></p>
+        </form>
+        <script>
+            document.getElementById("name").innerHTML=localStorage.getItem("name");
+            document.getElementById("email").innerHTML=localStorage.getItem("email");
+            document.getElementById("address").innerHTML=localStorage.getItem("address");
+            </script>
+    </body>
+</hmtl>
